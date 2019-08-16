@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Class-Path: commons-lang3-3.7.jar commons-cli-1.4.jar commons-csv-1.5.
+ jar progressbar-0.5.5.jar jline-2.12.jar
+Main-Class: Main
+

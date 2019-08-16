@@ -1,0 +1,33 @@
+plugins {
+    id 'java'
+}
+
+group 'com.egar'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.7'
+    compile group: 'commons-cli', name: 'commons-cli', version: '1.4'
+    compile group: 'org.apache.commons', name: 'commons-csv', version: '1.5'
+    compile group: 'me.tongfei', name: 'progressbar', version: '0.5.5'
+}
+
+jar {
+    manifest {
+        attributes(
+                'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
+                'Main-Class': 'Main'
+        )
+    }
+
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
